@@ -1,0 +1,11 @@
+{
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "files": ["lib/Filterus/functions.php"],
+        "psr-0": {
+            "Filterus": "lib"
+        }
+    }
+}
