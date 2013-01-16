@@ -95,3 +95,20 @@ If we wanted to validate an associative array, we would use a "map" filter:
 
     var_dump($filter->validate($array)); // true
 
+## Procedural Interface
+
+Filterus also ships with a procedural interface for calling filters.
+
+    \Filterus\filter($var, $filter);
+    
+And
+
+    \Filterus\validate($var, $filter);
+    
+Any filter is supported (both are basically simple wrappers):
+
+    function \Filterus\filter($var, $filter) {
+        return \Filterus\Filter::factory($filter)->filter($var);
+    }
+    
+Both are just conviencnce functions.
