@@ -7,7 +7,6 @@ class String extends \Filterus\Filter {
     protected $defaultOptions = array(
         'min' => 0,
         'max' => PHP_INT_MAX,
-        'default' => '',
     );
 
     public function filter($var) {
@@ -15,13 +14,13 @@ class String extends \Filterus\Filter {
             $var = (string) $var;
         }
         if (!is_scalar($var)) {
-            return $this->options['default'];
+            return null;
         }
         $var = (string) $var;
         if ($this->options['min'] > strlen($var)) {
-            return $this->options['default'];
+            return null;
         } elseif ($this->options['max'] < strlen($var)) {
-            return $this->options['default'];
+            return null;
         }
         return $var;
     }

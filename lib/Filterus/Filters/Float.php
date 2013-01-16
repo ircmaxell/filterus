@@ -7,12 +7,11 @@ class Float extends \Filterus\Filter {
     protected $defaultOptions = array(
         'min' => null,
         'max' => null,
-        'default' => 0.0,
     );
 
     public function filter($var) {
         if (!is_numeric($var)) {
-            return $this->options['default'];
+            return null;
         }
         $var = (float) $var;
         if (null !== $this->options['min'] && $this->options['min'] > $var) {

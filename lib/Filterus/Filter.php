@@ -50,17 +50,17 @@ abstract class Filter {
         } 
         list ($filterName, $options) = static::parseFilter($filter);
         if (!isset(self::$filters[$filterName])) {
-            throw new \RuntimeException('Invalid Filter Specified: ' . $filter);
+            throw new \InvalidArgumentException('Invalid Filter Specified: ' . $filter);
         }
         $class = self::$filters[$filterName];
         return new $class($options);
     }
     
     public static function registerFilter($name, $class) {
-        if (!$class instanceof self) {
+        if (!is_subclass_of($class, __CLASS__)) {
             throw new \InvalidArgumentException("Class name must be an instance of Filter");
         }
-        $this->filters[strtolower($name)] = $class;
+        self::$filters[strtolower($name)] = $class;
     }
     
 
@@ -74,6 +74,10 @@ abstract class Filter {
         $this->setOptions($options);
     }
 
+    public function getOptions() {
+        return $this->options;
+    }
+
     public function setOption($key, $value) {
         $this->options[$key] = $value;
         return $this;
@@ -85,7 +89,8 @@ abstract class Filter {
     }
 
     public function validate($var) {
-        return $var == $this->filter($var);
+        $filtered = $this->filter($var);
+        return !is_null($filtered) && $filtered == $var;
     }
 
     protected static function parseFilter($filter) {

@@ -6,26 +6,21 @@ class Object extends \Filterus\Filter {
     
     protected $defaultOptions = array(
         'class' => '',
-        'default' => null,
-        'defaultFactory' => null,
     );
 
     public function filter($var) {
         if (!is_object($var)) {
-            return $this->getDefault();
+            return null;
         }
         if ($this->options['class'] && !$var instanceof $this->options['class']) {
-            return $this->getDefault();
+            return null;
         }
 
         return $var;
     }
 
-    protected function getDefault() {
-        if ($this->options['defaultFactory']) {
-            $factory = $this->options['defaultFactory'];
-            return $factory();
-        }
-        return $this->options['default'];
+    public function validate($var) {
+        return $var === $this->filter($var);
     }
+
 }

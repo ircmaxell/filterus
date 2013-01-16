@@ -19,7 +19,7 @@ class IP extends \Filterus\Filter {
         if ($this->options['ipv6']) {
             $flags |= FILTER_FLAG_IPV6;
         }
-        if (!$this->option['private']) {
+        if (!$this->options['private']) {
             $flags |= FILTER_FLAG_NO_PRIV_RANGE;
         }
         if (!$this->options['reserved']) {

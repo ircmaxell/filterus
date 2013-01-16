@@ -9,18 +9,17 @@ class Arrays extends \Filterus\Filter {
         'max' => PHP_INT_MAX,
         'keys' => null,
         'values' => null,
-        'default' => array(),
     );
 
     public function filter($var) {
         if (!is_array($var)) {
-            return $this->options['default'];
+            return null;
         }
         $count = count($var);
         if ($this->options['min'] > $count) {
-            return $this->options['default'];
+            return null;
         } elseif ($this->options['max'] < $count) {
-            return $this->options['default'];
+            return null;
         }
         if ($this->options['keys']) {
             $filter = self::factory($this->options['keys']);

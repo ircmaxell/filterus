@@ -6,14 +6,16 @@ class Map extends \Filterus\Filter {
     
     protected $defaultOptions = array(
         'filters' => array(),
-        'default' => null,
     );
 
     public function filter($var) {
         if (!is_object($var) && !is_array($var)) {
-            return $this->getDefault();
+            return null;
         }
         $isArray = is_array($var) || $var instanceof ArrayAccess;
+        if (!$isArray) {
+            $var = clone $var;
+        }
 
         foreach ($this->options['filters'] as $key => $filter) {
             $filter = self::factory($filter);
@@ -38,7 +40,7 @@ class Map extends \Filterus\Filter {
             return false;
         }
         if (is_object($var)) {
-            return $var == $this->filter(clone $var);
+            return $var == $this->filter($var);
         }
         return $var == $this->filter($var);
     }

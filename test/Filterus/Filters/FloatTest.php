@@ -2,16 +2,16 @@
 
 namespace Filterus\Filters;
 
-class IntTest extends \PHPUnit_Framework_TestCase {
+class FloatTest extends \PHPUnit_Framework_TestCase {
 
     public static function provideTestFilter() {
         return array(
-            array(array(), 1, 1, true),
+            array(array(), 1, 1.0, true),
             array(array(), PHP_INT_MAX, PHP_INT_MAX, true),
             array(array(), ~PHP_INT_MAX, ~PHP_INT_MAX, true),
             array(array(), "1", 1, true),
-            array(array(), "test", 0, false),
-            array(array(), 1.1, 1, false),
+            array(array(), "test", null, false),
+            array(array(), 1.1, 1.1, true),
             array(array(), new \StdClass, 0, false),
             array(array('min' => 2), 1, 2, false),
             array(array('min' => 2), 2, 2, true),
@@ -28,7 +28,7 @@ class IntTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider provideTestFilter
      */
     public function testFilter($options, $raw, $filtered, $valid) {
-        $int = new Int($options);
+        $int = new Float($options);
         $this->assertEquals($filtered, $int->filter($raw));
         $this->assertEquals($valid, $int->validate($raw));
     }

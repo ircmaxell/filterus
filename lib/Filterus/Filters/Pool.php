@@ -5,7 +5,6 @@ namespace Filterus\Filters;
 class Pool extends \Filterus\Filter {
     
     protected $defaultOptions = array(
-        'default' => '',
         'filters' => array(),
     );
 
@@ -16,7 +15,7 @@ class Pool extends \Filterus\Filter {
                 return $filter->filter($var);
             }
         }
-        return $this->options['default'];
+        return null;
     }
 
     public function validate($var) {
