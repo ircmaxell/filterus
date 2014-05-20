@@ -3,15 +3,15 @@
     "description": "A library for filtering variables in PHP",
     "version": "1.0.0",
     "keywords": ["filter", "security"],
-	"homepage": "https://github.com/ircmaxell/filterus",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Anthony Ferrara",
-			"email": "ircmaxell@php.net",
-			"homepage": "http://blog.ircmaxell.com"
-		}
-	],
+    "homepage": "https://github.com/ircmaxell/filterus",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anthony Ferrara",
+            "email": "ircmaxell@php.net",
+            "homepage": "http://blog.ircmaxell.com"
+        }
+    ],
     "require": {
         "php": ">=5.3.0"
     },
