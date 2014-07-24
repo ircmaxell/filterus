@@ -5,7 +5,7 @@ Filterus - A flexible PHP 5.3 filter package
 
 Each filter class has two primary methods:
 
-* `$filter->filter($var)` - returns a modified version of `$var` filtered to the options. If it cannot be safely modified, a default vlaue will be returned.
+* `$filter->filter($var)` - returns a modified version of `$var` filtered to the options. If it cannot be safely modified, a default value will be returned.
 * `$filter->validate($var)` - Returns a boolean identifying if the value is valid.
 
 ## Simple Filters (with options):
@@ -111,4 +111,4 @@ Any filter is supported (both are basically simple wrappers):
         return \Filterus\Filter::factory($filter)->filter($var);
     }
     
-Both are just conviencnce functions.
+Both are just convenience functions.
