@@ -99,15 +99,15 @@ If we wanted to validate an associative array, we would use a "map" filter:
 
 Filterus also ships with a procedural interface for calling filters.
 
-    \Filterus\filter($var, $filter);
+    \Filterus\filter($filter, $var);
     
 And
 
-    \Filterus\validate($var, $filter);
+    \Filterus\validate($filter, $var);
     
 Any filter is supported (both are basically simple wrappers):
 
-    function \Filterus\filter($var, $filter) {
+    function \Filterus\filter($filter, $var) {
         return \Filterus\Filter::factory($filter)->filter($var);
     }
     
