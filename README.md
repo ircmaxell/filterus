@@ -79,7 +79,7 @@ If you pass a filter to `Filter::factory()`, it will be returned unmodified. So 
 
 Complex chaining can also be supported. So if you wanted to check if an array with a minimum size of 4, with numeric keys and containing strings of minimum length 5, that could be built like so:
 
-    $filter = Filter::array('min:4', 'int', 'string,min:5');
+    $filter = Filter::arrays('min:4', 'int', 'string,min:5');
 
 If we wanted to validate an associative array, we would use a "map" filter:
 
@@ -99,15 +99,15 @@ If we wanted to validate an associative array, we would use a "map" filter:
 
 Filterus also ships with a procedural interface for calling filters.
 
-    \Filterus\filter($var, $filter);
+    \Filterus\filter($filter, $var);
     
 And
 
-    \Filterus\validate($var, $filter);
+    \Filterus\validate($filter, $var);
     
 Any filter is supported (both are basically simple wrappers):
 
-    function \Filterus\filter($var, $filter) {
+    function \Filterus\filter($filter, $var) {
         return \Filterus\Filter::factory($filter)->filter($var);
     }
     
