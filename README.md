@@ -64,53 +64,69 @@ Each filter class has two primary methods:
 
 Simple filters can be specified using a comma-separated-value list. So a filter specifying a string with minimum length of 5 could be represented as:
 
-    $filter = Filter::factory('string,min:5');
- 
+``` php
+$filter = Filter::factory('string,min:5');
+```
+
 Or
 
-    $filter = new Filters\String(array('min' => 5));
+``` php
+$filter = new Filters\String(array('min' => 5));
+```
 
 If you pass a filter to `Filter::factory()`, it will be returned unmodified. So you can write functions like:
 
-    function foo($bar, $filter) {
-        // do something with $bar and set in $baz
-        return Filter::factory($filter)->filter($baz);
-    }
+``` php
+function foo($bar, $filter) {
+    // do something with $bar and set in $baz
+    return Filter::factory($filter)->filter($baz);
+}
+```
 
 Complex chaining can also be supported. So if you wanted to check if an array with a minimum size of 4, with numeric keys and containing strings of minimum length 5, that could be built like so:
 
-    $filter = Filter::array('min:4', 'int', 'string,min:5');
+``` php
+$filter = Filter::array('min:4', 'int', 'string,min:5');
+```
 
 If we wanted to validate an associative array, we would use a "map" filter:
 
-    $array = array(
-        'foo' => 2,
-        'bar' => 'test',
-    );
+``` php
+$array = array(
+    'foo' => 2,
+    'bar' => 'test',
+);
 
-    $filter = Filter::map(array(
-        'foo' => 'int',
-        'bar' => 'string,min:4',
-    ));
+$filter = Filter::map(array(
+    'foo' => 'int',
+    'bar' => 'string,min:4',
+));
 
-    var_dump($filter->validate($array)); // true
+var_dump($filter->validate($array)); // true
+```
 
 ## Procedural Interface
 
 Filterus also ships with a procedural interface for calling filters.
 
-    \Filterus\filter($var, $filter);
-    
+``` php
+\Filterus\filter($var, $filter);
+```
+
 And
 
-    \Filterus\validate($var, $filter);
-    
+``` php
+\Filterus\validate($var, $filter);
+```
+
 Any filter is supported (both are basically simple wrappers):
 
-    function \Filterus\filter($var, $filter) {
-        return \Filterus\Filter::factory($filter)->filter($var);
-    }
-    
+``` php
+function \Filterus\filter($var, $filter) {
+    return \Filterus\Filter::factory($filter)->filter($var);
+}
+```
+
 Both are just convenience functions.
 
 
