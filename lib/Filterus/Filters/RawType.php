@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Raw extends \Filterus\Filter {
-    
+class RawType extends \Filterus\Filter {
+
     public function filter($var) {
         return $var;
     }

@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Object extends \Filterus\Filter {
-    
+class ObjectType extends \Filterus\Filter {
+
     protected $defaultOptions = array(
         'class' => '',
     );

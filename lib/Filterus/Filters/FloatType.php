@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Float extends \Filterus\Filter {
-    
+class FloatType extends \Filterus\Filter {
+
     protected $defaultOptions = array(
         'min' => null,
         'max' => null,

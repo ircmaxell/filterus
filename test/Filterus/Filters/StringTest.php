@@ -30,7 +30,7 @@ class StringTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider provideTestFilter
      */
     public function testFilter($options, $raw, $filtered, $valid) {
-        $int = new String($options);
+        $int = new StringType($options);
         $this->assertEquals($filtered, $int->filter($raw));
         $this->assertEquals($valid, $int->validate($raw));
     }

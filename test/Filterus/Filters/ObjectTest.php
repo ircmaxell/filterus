@@ -22,7 +22,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider provideTestFilter
      */
     public function testFilter($options, $raw, $filtered, $valid) {
-        $int = new Object($options);
+        $int = new ObjectType($options);
         $this->assertEquals($filtered, $int->filter($raw));
         $this->assertEquals($valid, $int->validate($raw));
     }

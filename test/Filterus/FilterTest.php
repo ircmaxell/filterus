@@ -5,7 +5,7 @@ namespace Filterus;
 class FilterTest extends \PHPUnit_Framework_TestCase {
 
     public function testOptions() {
-        $filter = new Filters\Raw;
+        $filter = new Filters\RawType;
         $filter->setOptions(array(1, 2));
         $this->assertEquals(array(1, 2), $filter->getOptions());
         $filter->setOption('foo', 'bar');
@@ -16,15 +16,15 @@ class FilterTest extends \PHPUnit_Framework_TestCase {
 
     public function testFactory() {
         $raw = Filter::factory('raw');
-        $this->assertTrue($raw instanceof Filters\Raw);
+        $this->assertTrue($raw instanceof Filters\RawType);
     }
 
     public function testFactoryParsing() {
         $raw = Filter::factory('raw,foo:bar');
-        $this->assertTrue($raw instanceof Filters\Raw);
+        $this->assertTrue($raw instanceof Filters\RawType);
         $this->assertEquals(array('foo' => 'bar'), $raw->getOptions());
         $raw = Filter::factory('raw,foo:bar,');
-        $this->assertTrue($raw instanceof Filters\Raw);
+        $this->assertTrue($raw instanceof Filters\RawType);
         $this->assertEquals(array('foo' => 'bar'), $raw->getOptions());
     }
 
@@ -42,9 +42,9 @@ class FilterTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testFactoryRegister() {
-        Filter::registerFilter('gibberish', 'Filterus\Filters\Raw');
+        Filter::registerFilter('gibberish', 'Filterus\Filters\RawType');
         $expect = Filter::factory('gibberish');
-        $this->assertTrue($expect instanceof Filters\Raw);
+        $this->assertTrue($expect instanceof Filters\RawType);
     }
 
     /**
@@ -69,30 +69,30 @@ class FilterTest extends \PHPUnit_Framework_TestCase {
     public function testMap() {
         $mapArray = array('a' => 'int');
         $map = Filter::map($mapArray);
-        $this->assertTrue($map instanceof Filters\Map);
+        $this->assertTrue($map instanceof Filters\MapType);
         $this->assertEquals(array('filters' => $mapArray), $map->getOptions());
     }
 
     public function testArrays() {
         $array = Filter::arrays();
-        $this->assertTrue($array instanceof Filters\Arrays);
+        $this->assertTrue($array instanceof Filters\ArrayType);
     }
 
     public function testArraysOptions() {
         $array = Filter::arrays('foo:bar');
-        $this->assertTrue($array instanceof Filters\Arrays);
+        $this->assertTrue($array instanceof Filters\ArrayType);
         $this->assertEquals(array('foo' => 'bar', 'min' => 0, 'max' => PHP_INT_MAX, 'keys' => null, 'values' => null), $array->getOptions());
     }
 
     public function testArraysKeys() {
         $array = Filter::arrays('', 'int');
-        $this->assertTrue($array instanceof Filters\Arrays);
+        $this->assertTrue($array instanceof Filters\ArrayType);
         $this->assertEquals(array('min' => 0, 'max' => PHP_INT_MAX, 'keys' => 'int', 'values' => null), $array->getOptions());
     }
 
     public function testArraysValues() {
         $array = Filter::arrays('', '', 'int');
-        $this->assertTrue($array instanceof Filters\Arrays);
+        $this->assertTrue($array instanceof Filters\ArrayType);
         $this->assertEquals(array('min' => 0, 'max' => PHP_INT_MAX, 'keys' => null, 'values' => 'int'), $array->getOptions());
     }
 

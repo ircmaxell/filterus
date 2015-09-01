@@ -16,7 +16,7 @@ class RawTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider provideTestFilter
      */
     public function testFilter($raw) {
-        $int = new Raw(array());
+        $int = new RawType(array());
         $this->assertEquals($raw, $int->filter($raw));
         $this->assertEquals(true, $int->validate($raw));
     }

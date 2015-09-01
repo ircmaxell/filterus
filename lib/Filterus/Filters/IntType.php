@@ -4,8 +4,8 @@ namespace Filterus\Filters;
 
 defined('PHP_INT_MIN') or define('PHP_INT_MIN', ~PHP_INT_MAX);
 
-class Int extends \Filterus\Filter {
-    
+class IntType extends \Filterus\Filter {
+
     protected $defaultOptions = array(
         'min' => PHP_INT_MIN,
         'max' => PHP_INT_MAX,

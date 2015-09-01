@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Map extends \Filterus\Filter {
-    
+class MapType extends \Filterus\Filter {
+
     protected $defaultOptions = array(
         'filters' => array(),
     );
