@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Arrays extends \Filterus\Filter {
-    
+class ArrayType extends \Filterus\Filter {
+
     protected $defaultOptions = array(
         'min' => 0,
         'max' => PHP_INT_MAX,

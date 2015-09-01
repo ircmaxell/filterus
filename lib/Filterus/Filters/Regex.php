@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Regex extends String {
-    
+class Regex extends StringType {
+
     protected $defaultOptions = array(
         'min' => 0,
         'max' => PHP_INT_MAX,

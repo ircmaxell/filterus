@@ -2,8 +2,8 @@
 
 namespace Filterus\Filters;
 
-class Alnum extends Regex {
-    
+class AlnumType extends Regex {
+
     protected $defaultOptions = array(
         'min' => 0,
         'max' => PHP_INT_MAX,
