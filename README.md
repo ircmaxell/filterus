@@ -1,14 +1,14 @@
 Filterus - A flexible PHP 5.3 filter package
 ============================================
 
-## Filter Methods:
+## Filter Methods
 
 Each filter class has two primary methods:
 
-* `$filter->filter($var)` - returns a modified version of `$var` filtered to the options. If it cannot be safely modified, a default value will be returned.
+* `$filter->filter($var)` - returns a modified version of the value filtered to the options. If it cannot be safely modified, a default value will be returned.
 * `$filter->validate($var)` - Returns a boolean identifying if the value is valid.
 
-## Simple Filters (with options):
+## Simple Filters (with options)
 
 * `alnum` - Alpha numeric
     * `min` - 0 - Minimum length
@@ -60,7 +60,7 @@ Each filter class has two primary methods:
 * `Filter::chain($filter1, $filter2...)` - Chains multiple filters together to run on the same value (similar to `AND` joining filters).
 * `Filter::pool($filter1, $filter2...)` - Runs the same value through multiple filters using the first valid return (similar to `OR` joining filters)
 
-## Usage:
+## Usage
 
 Simple filters can be specified using a comma-separated-value list. So a filter specifying a string with minimum length of 5 could be represented as:
 
