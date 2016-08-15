@@ -2,23 +2,21 @@
 
 namespace Filterus\Filters;
 
-defined('PHP_INT_MIN') or define('PHP_INT_MIN', ~PHP_INT_MAX);
-
-class Int extends \Filterus\Filter {
+class Floats extends \Filterus\Filter {
     
     protected $defaultOptions = array(
-        'min' => PHP_INT_MIN,
-        'max' => PHP_INT_MAX,
+        'min' => null,
+        'max' => null,
     );
 
     public function filter($var) {
         if (!is_numeric($var)) {
             return null;
         }
-        $var = (int) $var;
-        if ($this->options['min'] > $var) {
+        $var = (float) $var;
+        if (null !== $this->options['min'] && $this->options['min'] > $var) {
             return $this->options['min'];
-        } elseif ($this->options['max'] < $var) {
+        } elseif (null !== $this->options['max'] && $this->options['max'] < $var) {
             return $this->options['max'];
         }
         return $var;

@@ -2,15 +2,14 @@
 
 namespace Filterus\Filters;
 
-class BooleanTest extends \PHPUnit_Framework_TestCase {
+require_once __DIR__ . '/../../Stubs/CastableClass.php';
+
+class UUIDTest extends \PHPUnit_Framework_TestCase {
 
     public static function provideTestFilter() {
         return array(
-            array(array(), 1, true, true),
-            array(array(), 'yes', true, true),
-            array(array(), 'no', false, true),
-            array(array(), '0', false, true),
-            array(array(), 'test', null, false),
+            array(array(), '123e4567-e89b-12d3-a456-426655440000', '123e4567-e89b-12d3-a456-426655440000', true),
+            array(array(), '123e4567-e89b-12d3-a456-42665544000', '', false),
         );
     }
 
@@ -18,9 +17,10 @@ class BooleanTest extends \PHPUnit_Framework_TestCase {
      * @dataProvider provideTestFilter
      */
     public function testFilter($options, $raw, $filtered, $valid) {
-        $int = new Booleans($options);
+        $int = new UUID($options);
         $this->assertEquals($filtered, $int->filter($raw));
         $this->assertEquals($valid, $int->validate($raw));
     }
 
 }
+

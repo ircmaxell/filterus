@@ -7,16 +7,17 @@ abstract class Filter {
     protected static $filters = array(
         'alnum'  => 'Filterus\Filters\Alnum',
         'array'  => 'Filterus\Filters\Arrays',
-        'bool'   => 'Filterus\Filters\Boolean',
+        'bool'   => 'Filterus\Filters\Booleans',
         'email'  => 'Filterus\Filters\Email',
-        'float'  => 'Filterus\Filters\Float',
-        'int'    => 'Filterus\Filters\Int',
+        'float'  => 'Filterus\Filters\Floats',
+        'int'    => 'Filterus\Filters\Ints',
         'ip'     => 'Filterus\Filters\IP',
         'object' => 'Filterus\Filters\Object',
         'raw'    => 'Filterus\Filters\Raw',
         'regex'  => 'Filterus\Filters\Regex',
-        'string' => 'Filterus\Filters\String',
+        'string' => 'Filterus\Filters\Strings',
         'url'    => 'Filterus\Filters\URL',
+        'uuid'   => 'Filterus\Filters\UUID',
     );
 
     public static function arrays($filter = '', $keys = '', $values = '') {

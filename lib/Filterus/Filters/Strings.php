@@ -2,7 +2,7 @@
 
 namespace Filterus\Filters;
 
-class String extends \Filterus\Filter {
+class Strings extends \Filterus\Filter {
     
     protected $defaultOptions = array(
         'min' => 0,

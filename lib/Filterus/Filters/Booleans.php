@@ -2,7 +2,7 @@
 
 namespace Filterus\Filters;
 
-class Boolean extends \Filterus\Filter {
+class Booleans extends \Filterus\Filter {
     
     protected $defaultOptions = array(
         'default' => null,

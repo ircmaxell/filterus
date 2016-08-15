@@ -2,7 +2,7 @@
 
 namespace Filterus\Filters;
 
-class Regex extends String {
+class Regex extends Strings {
     
     protected $defaultOptions = array(
         'min' => 0,
