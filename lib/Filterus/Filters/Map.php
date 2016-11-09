@@ -39,10 +39,6 @@ class Map extends \Filterus\Filter {
         if (!is_object($var) && !is_array($var)) {
             return false;
         }
-        if (is_object($var)) {
-            return $var == $this->filter($var);
-        }
         return $var == $this->filter($var);
     }
-
 }
