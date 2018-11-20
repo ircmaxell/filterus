@@ -16,7 +16,7 @@ Each filter class has two primary methods:
     * `default` - `''` - Default return value
 * `array` - Array matching
     * `min` - 0 - Minimum size
-    * `maximum` - PHP_INT_MAX - Maxim size
+    * `maximum` - PHP_INT_MAX - Maximum size
     * `keys` - `null` - Filter to run on the keys
     * `values` - `null` - Filter to run on the values
     * `default` - `array()` - Default return value
