@@ -12,7 +12,7 @@ abstract class Filter {
         'float'  => 'Filterus\Filters\Floats',
         'int'    => 'Filterus\Filters\Ints',
         'ip'     => 'Filterus\Filters\IP',
-        'object' => 'Filterus\Filters\Object',
+        'object' => 'Filterus\Filters\Objects',
         'raw'    => 'Filterus\Filters\Raw',
         'regex'  => 'Filterus\Filters\Regex',
         'string' => 'Filterus\Filters\Strings',
@@ -48,7 +48,7 @@ abstract class Filter {
     public static function factory($filter) {
         if ($filter instanceof self) {
             return $filter;
-        } 
+        }
         list ($filterName, $options) = static::parseFilter($filter);
         if (!isset(self::$filters[$filterName])) {
             throw new \InvalidArgumentException('Invalid Filter Specified: ' . $filter);
@@ -56,14 +56,14 @@ abstract class Filter {
         $class = self::$filters[$filterName];
         return new $class($options);
     }
-    
+
     public static function registerFilter($name, $class) {
         if (!is_subclass_of($class, __CLASS__)) {
             throw new \InvalidArgumentException("Class name must be an instance of Filter");
         }
         self::$filters[strtolower($name)] = $class;
     }
-    
+
 
     protected $defaultOptions = array();
 
